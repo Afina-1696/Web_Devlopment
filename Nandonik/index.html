@@ -1,252 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nandonik</title>
-
-    <style>
-        body {
-          font-size: 28px;
-        }
-        
-        #main-navbar {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-          overflow: overlay;
-          background-color: #333;
-          position: -webkit-sticky; 
-          position: sticky;
-          top: 0;
-        }
-        
-        li {
-          float: left;
-        }
-        
-        li a {
-          display: block;
-          color: white;
-          text-align: center;
-          padding: 14px 16px;
-          text-decoration: none;
-        }
-        
-        li a:hover {
-          background-color: #111;
-        }
-        
-        li.right {float: right;}
-        
-        .container {
-          padding: 14px 16px;
-        }
-
-.bar1, .bar2, .bar3 {
-  width: 35px;
-  height: 5px;
-  background-color: white;
-  margin: 6px 0;
-  transition: 0.4s;
-  
-}
-
-.change .bar1 {
-  transform: translate(0, 11px) rotate(-45deg);
-}
-
-.change .bar2 {opacity: 0;}
-
-.change .bar3 {
-  transform: translate(0, -11px) rotate(45deg);
-}
-
-.menu a{
-  color: white;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  display: block;
-}
-.menu #myLinks {
-  display: none;
-}
-
-.menu a.icon {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-/* image slider  */
-.slider-container {
-    position: relative;
-    max-width: 100%;
-    height: 600px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.slider {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-.slide {
-    flex: 0 0 100%;
-}
-
-.slide img {
-    width: 100%;
-    height: 600px;
-}
-
-.slider-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    font-size: 24px;
-    padding: 10px 20px;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.prev-button {
-    left: 0;
-}
-
-.next-button {
-    right: 0;
-}
-
-/* navbar transparent  */
-.navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.150);
-    z-index: 1000;
-    transition: background 0.5s ease;
-}
-
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 10px 20px;
-}
-
-.navbar-logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-}
-
-.navbar-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-.navbar-menu li {
-    margin-right: 20px;
-}
-
-.navbar-menu a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.navbar-menu a:hover {
-    color: #ff9900; /* Change color on hover */
-}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS.css">
+  <title>Nandonik</title>
 
 
 
-        </style>
-        
 </head>
+
 <body>
-    <!-- image slider -->
-    <div class="slider-container">
-      <div class="slider">
-      <div class="slide">
-          <img src="/front_page_slide/combo-mekup.jpg" alt="Image 1">
-      </div>
-      <div class="slide">
-          <img src="/front_page_slide/johnsons-baby-top-to-toe-bath-200-ml-baby-oil-100-ml-combo.jpg" alt="Image 2">
-      </div>
-      <div class="slide">
-          <img src="/front_page_slide/night-time-skincare-combo.jpg" alt="Image 3">
-      </div>
-      </div>
-      <button id="prevBtn" class="slider-button prev-button">&#9664;</button>
-      <button id="nextBtn" class="slider-button next-button">&#9654;</button>
-  </div>
-  <nav class="navbar">
-    <div class="navbar-container">
-        <a href="#" class="navbar-logo">Nandonik</a>
-        <ul class="navbar-menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Search</a></li>
-            <li><a href="#">Login/Register</a></li>
-        </ul>
-    </div>
-</nav>
-  <script src="script.js"></script>
-
-
-    <br>
-    <!-- 2nd navbar  -->
-    <ul  id="main-navbar">
-      <li class="menu"><div class="container" onclick="myFunction(this)">
+  <ul id="main-navbar">
+    <li class="menu">
+      <div class="container" onclick="myFunction(this)">
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
       </div>
-       <div id="myLinks">
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
+      <div id="myLinks">
+        <a href="#news">Notifications </a>
+        <a href="#contact">Profile</a>
         <a href="#about">About</a>
       </div>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <!-- <i class="fa fa-bars"></i> -->
-      </a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
       <script>
         function myFunction(x) {
           x.classList.toggle("change");
           var x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
+          if (x.style.display === "block") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "block";
+          }
         }
-        </script>
-        </li>
+      </script>
+    </li>
 
-        <li><a href="#home">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li class="right"><a href="#about">About</a></li>
-        
+    <li><a href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li class="right"><a href="#about">About</a></li>
+
+  </ul>
+
+  
+  <!-- image slider -->
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slide">
+        <img src="/front_page_slide/slide-1.png" alt="Image 1">
+      </div>
+      <div class="slide">
+        <img src="/front_page_slide/slide-1.png" alt="Image 2">
+      </div>
+      <div class="slide">
+        <img src="/front_page_slide/slide-1.png" alt="Image 3">
+      </div>
+    </div>
+    <button id="prevBtn" class="slider-button prev-button">&#9664;</button>
+    <button id="nextBtn" class="slider-button next-button">&#9654;</button>
+  </div>
+  <!-- <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#" class="navbar-logo">Nandonik</a>
+      <ul class="navbar-menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Search</a></li>
+        <li><a href="#">Login/Register</a></li>
       </ul>
+    </div>
+  </nav> -->
+  <script src="script.js"></script>
 
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nemo. Officia magnam voluptate earum expedita possimus dolore hic corporis eligendi eius ut alias saepe deserunt nihil nisi qui eum debitis non quam molestiae velit, quas doloribus vero? Veritatis quae quibusdam tempore ut, commodi nostrum eaque, sit voluptate autem, quisquam fugiat aut officiis quaerat iure ratione? Esse temporibus fugit et, neque debitis voluptas recusandae laudantium iusto laboriosam delectus nisi consectetur eum libero saepe nihil explicabo porro praesentium reiciendis suscipit enim! Doloribus sed doloremque cumque, corporis, facere reprehenderit laboriosam recusandae magnam aperiam neque quibusdam voluptas vitae velit eius dolorem, suscipit impedit! Fugiat saepe vel voluptas est maxime officiis voluptates eum. Qui totam magnam ipsam delectus quibusdam maxime voluptate placeat. Eaque autem optio consequuntur nesciunt nisi accusamus ipsam atque, distinctio totam nostrum eum adipisci hic alias repudiandae voluptatem nihil, reiciendis ut voluptates repellendus fugit aspernatur corrupti. Fugiat mollitia vitae aperiam, ad odit quia consequuntur molestiae dignissimos deleniti deserunt delectus sapiente rerum laborum nisi eos temporibus eaque non neque praesentium exercitationem, natus excepturi itaque similique! Corrupti tempore rerum eius commodi, aliquid ad odit voluptatum, repellat soluta non magni laudantium labore quam dolor, saepe nulla quos aperiam numquam. Ad explicabo aliquid molestiae eligendi quis, vitae ipsam, architecto temporibus omnis maxime dicta consequuntur perspiciatis iusto? In excepturi assumenda, fugiat sapiente amet at numquam, illum id nobis recusandae quasi iste voluptate architecto molestiae nulla repudiandae modi quam suscipit voluptatibus! Eos consequatur ea deleniti deserunt blanditiis sunt quidem corporis eveniet asperiores! Hic cumque debitis reprehenderit. Quam sapiente a vero consectetur reprehenderit obcaecati assumenda doloribus, voluptate quia molestiae impedit non eveniet ex aspernatur et velit voluptas libero officia suscipit, at quidem reiciendis! Perferendis aspernatur quis in quam aliquid! Ea consequuntur enim sequi, fugiat alias iure nostrum perspiciatis culpa doloribus eligendi cum temporibus dolorem eius dicta amet soluta assumenda id impedit. Natus quia molestiae sunt mollitia ullam incidunt et, eius aperiam, suscipit blanditiis officia nesciunt alias ea dolorem perspiciatis, quos vero modi voluptatum quasi itaque! Ullam quibusdam similique officia cum odit dolorem hic consequuntur! Cupiditate est perspiciatis laboriosam iste dolores assumenda error maiores, minima voluptatibus, natus quia cum? Minima dolorum eaque nemo, illo consequatur minus eius eum non est impedit molestias a quam repellendus dolores hic ratione, expedita corporis autem! Perferendis quam rerum explicabo eveniet maxime laborum earum ullam repudiandae provident quos, excepturi soluta reiciendis in animi aperiam, assumenda deserunt numquam obcaecati? Tempore inventore modi nulla expedita, saepe perspiciatis voluptate dignissimos sit aliquid et, dicta a! Aspernatur omnis commodi recusandae incidunt ab! Sed, soluta quisquam repellendus ad earum quaerat voluptatum illo ea animi quidem. Debitis, laudantium similique eius asperiores ut aliquid neque quibusdam consectetur molestiae quam doloribus pariatur ipsam aliquam, iusto ab soluta provident cumque qui autem blanditiis. Inventore molestias quasi voluptas recusandae beatae dicta! Consequuntur quod, sunt consectetur impedit perspiciatis molestiae quos rem explicabo ipsa illum optio ut recusandae laudantium expedita a suscipit vero fugit minima inventore mollitia. Earum rem repellendus praesentium, quo esse delectus dolorum perspiciatis expedita, alias qui atque beatae quam! Nihil cumque odio, mollitia reiciendis corporis facilis quam repudiandae similique praesentium soluta cum incidunt modi, delectus fuga ab officiis. Beatae velit asperiores aliquam blanditiis quo sint maxime est esse odio, ipsum sit modi eos officia quod adipisci sapiente quia cupiditate neque! Laudantium aspernatur, quis eveniet fugit earum cumque ipsam eligendi voluptates repellat a ipsum tempora iure suscipit harum, nam, expedita optio culpa sequi doloribus libero. Cumque vitae, voluptates explicabo accusantium minus distinctio repudiandae quasi adipisci sed aperiam rerum architecto necessitatibus consequatur asperiores magnam placeat, numquam corrupti error sequi sit. Placeat deleniti sint reiciendis vel explicabo quisquam quae facilis, autem velit commodi, iusto, saepe earum voluptatibus! Quam officia aliquid possimus quos obcaecati libero inventore dignissimos unde molestiae! Voluptate inventore sunt velit temporibus eaque. Sint distinctio omnis at pariatur amet esse. Adipisci sunt vero inventore soluta eveniet ad neque quasi laborum fugit nemo. Dicta iste dolore reiciendis dolorum repellat consectetur vel sed ratione distinctio similique labore praesentium dolorem qui veritatis corrupti fugiat explicabo veniam exercitationem impedit, iure cum nesciunt minima sint tempora. Delectus iure tempora debitis deleniti ratione laboriosam, repudiandae, culpa obcaecati earum doloribus dolorem libero perspiciatis commodi, nulla corrupti possimus ipsum dolores hic. Magni dicta culpa nulla, harum porro vitae natus officia voluptate fugiat eveniet adipisci obcaecati ducimus iusto corrupti necessitatibus similique. Dolorum qui atque quas eius suscipit repellendus itaque cumque esse, temporibus sint beatae odio inventore assumenda repellat incidunt voluptatum minima quis ea, amet reprehenderit reiciendis quisquam totam voluptas non. Alias amet quod earum! Nostrum ex labore recusandae deleniti omnis? Ullam ipsum quas perspiciatis, quidem necessitatibus autem temporibus cum voluptatem labore adipisci veniam quod sit sequi ipsam nisi aut ad cupiditate officia fugiat! Asperiores debitis, voluptatibus ratione minima minus vitae illo laborum rerum ipsam tempora, dolorem sunt quia commodi mollitia cupiditate. Molestias dolore quam, commodi error eius sit fugit numquam dolorum saepe a? Eius unde hic quod sed nulla necessitatibus. Repudiandae est sint veniam, iusto quis nulla impedit dignissimos nemo porro optio praesentium voluptatum perferendis quisquam beatae numquam eaque voluptas cumque magni labore. Provident, animi maxime labore optio et perspiciatis consectetur odio fuga corrupti voluptates aut sint earum possimus quas sequi tempora quidem accusamus rem libero ullam dicta harum? Rem id dicta quasi autem quia repudiandae magnam voluptate consequuntur repellendus fuga inventore dolore eius, dolorum, totam itaque nisi error veritatis quod nam possimus! Vel laudantium rem, alias fugit beatae eum quisquam aspernatur quibusdam. Quod accusantium voluptas asperiores perspiciatis necessitatibus omnis vero, reprehenderit in sunt tenetur adipisci atque eius reiciendis recusandae deserunt ducimus vel repellat ullam sapiente eum blanditiis quaerat vitae hic? Sequi dignissimos labore magnam natus optio esse beatae voluptatem alias? Magni dolorum soluta vel similique iure sit, et enim consequuntur commodi ipsa rerum sapiente ex expedita quaerat temporibus omnis! Totam ut facere aspernatur exercitationem maxime porro, consequatur rem temporibus quae illo consequuntur itaque at, omnis eos, iure praesentium eaque debitis sunt sed illum doloribus provident! Sed excepturi velit quaerat ut natus soluta nulla quos, maiores minus qui dolore corporis placeat ea eos doloribus, cupiditate molestias commodi. Ad cum aliquam accusamus quae quidem quos dicta quam eligendi, iusto, quaerat ab eos tempora veniam! Natus, explicabo laudantium ipsum hic repudiandae rerum illo maiores perferendis ut sequi totam quia ducimus rem eos sit minus enim possimus autem labore ratione quod corporis. Iusto minus sed quod maiores. Cupiditate est saepe, quibusdam magnam labore rerum harum molestias nostrum repudiandae necessitatibus sunt, laboriosam, quo libero. In ut nemo laborum accusantium veniam odio at excepturi iste! Quam perspiciatis nisi repellendus quis ut, enim obcaecati quas rerum accusantium velit, suscipit maxime! Asperiores ipsam, beatae quaerat quibusdam similique quas unde quis. Aperiam autem corrupti odio eius? Molestiae dicta voluptatum nostrum molestias nobis culpa optio, harum placeat corrupti distinctio cupiditate eaque deleniti animi unde eveniet, eligendi facilis, corporis ea tempora soluta? Ipsum fugit unde incidunt animi, laudantium itaque ullam dolor pariatur officiis est delectus nostrum doloremque, aspernatur eveniet quibusdam nisi neque, minima minus eligendi earum debitis architecto voluptatum? Sint, aspernatur! Similique architecto ullam eius sint in corporis doloribus amet explicabo sequi, quam cupiditate numquam tempore hic. Quas quis dolores mollitia debitis unde voluptatum distinctio, tempora, dignissimos nulla minus sapiente ut dolore rerum velit odio facilis earum porro perspiciatis cum hic? Sunt laudantium harum amet consequatur iste at mollitia ea fugiat! Odit repudiandae earum perspiciatis facilis eligendi inventore, enim, reprehenderit facere soluta fugit fugiat, voluptatum asperiores veritatis quasi qui et. Quasi est at eaque earum voluptas, facere asperiores iusto exercitationem reiciendis, nisi numquam nemo! Itaque excepturi sed quos maiores minus odio animi! Amet nesciunt harum eius quo optio quaerat quam dicta eum hic quasi nemo aperiam placeat commodi laudantium magni reiciendis blanditiis culpa rerum exercitationem impedit magnam ut ducimus, nam eveniet! Quas nulla unde quisquam sed, corporis voluptatibus velit suscipit quaerat molestias porro amet omnis, accusantium vero adipisci. Ea sequi amet itaque. Architecto amet voluptas deleniti modi harum a debitis reprehenderit delectus! Dolorem aperiam quibusdam quisquam eveniet totam aliquid, at voluptates assumenda magni nemo dolor id expedita, fugit blanditiis possimus quam enim quos. Repellendus ipsam harum placeat molestiae. Ea ut, sed corrupti deserunt vitae vero at quo voluptas totam cum exercitationem cupiditate perferendis laborum quidem sapiente recusandae officiis animi et distinctio minus corporis ducimus voluptatem placeat tempore. Autem sequi et explicabo totam illum excepturi corrupti libero vero velit recusandae, magnam illo non accusantium debitis obcaecati veniam atque, placeat fuga aut consequuntur, temporibus enim eum qui porro! Repudiandae id asperiores suscipit repellat eum sapiente ut fuga, exercitationem, vel nihil saepe accusamus quidem officiis animi minima commodi labore hic incidunt qui veritatis deserunt inventore. Explicabo doloremque perferendis animi, magni consectetur eveniet enim aut quia magnam, dignissimos similique dolor sequi debitis suscipit reprehenderit nemo. Quibusdam ipsam praesentium fugit. Odit sint eaque animi id! Ad perspiciatis mollitia consectetur id ratione. Eius architecto itaque eaque, ut hic sunt dignissimos! Quaerat, reprehenderit doloribus. Perspiciatis quia eveniet id, odit neque aliquam nostrum repellat quis sequi explicabo incidunt. Illum hic ratione natus ut doloremque aperiam officia fuga sit in unde non provident a eius error voluptatem sapiente consectetur, alias at delectus modi quibusdam aspernatur. Perspiciatis beatae eius reprehenderit? Odio voluptates corrupti fugit, sapiente accusamus dolorem nihil debitis? Maiores, aspernatur inventore laborum exercitationem tempore deserunt incidunt quae reiciendis omnis cupiditate eaque nemo, error provident ex quibusdam minus similique assumenda nesciunt cum minima excepturi aliquam id nisi ut. Reiciendis error repudiandae officia, a deserunt perferendis iste commodi soluta consequatur. Alias ducimus necessitatibus sint, illum asperiores quo officiis ut velit nam facilis animi eaque cumque recusandae hic beatae quae accusamus maiores. Eveniet nostrum harum quos. Eius ipsam provident nesciunt vitae consectetur culpa iusto neque adipisci, tempore veritatis molestiae doloribus iure maxime repellat voluptatem corporis distinctio similique perferendis, facilis necessitatibus explicabo mollitia. Sint molestiae, quia non nobis cum facilis doloremque accusamus eaque aperiam ullam numquam! Autem fugiat cum aspernatur ducimus maiores, atque optio repellat corporis eius accusantium, enim omnis eaque rerum illum vero nam sunt dolorem reiciendis. Possimus nam consequuntur quos! Aut facilis cupiditate debitis, earum adipisci vel odit labore nesciunt eaque, illum ad, nemo ea. Id, modi? Nostrum culpa exercitationem explicabo consequuntur repudiandae. Impedit nesciunt error quis rem unde atque cum magnam inventore, molestias explicabo nihil voluptatibus fugiat, reprehenderit iure perspiciatis distinctio quas soluta esse tempore quaerat cupiditate recusandae rerum nobis. Nisi rerum alias vero nam, suscipit consequuntur quod sunt officia sed dolorum dolore quibusdam, voluptate sint ratione eum quia facere fugiat vitae veniam reprehenderit saepe nesciunt optio, at et! Eaque commodi porro minus autem at recusandae nobis earum repudiandae soluta a ex nostrum, explicabo magni tenetur praesentium quas accusantium inventore reiciendis repellendus temporibus! Deserunt dolorem odit impedit, sit accusantium ea cupiditate aliquid quam fugiat eligendi, eum, ratione iure. Optio ea vero autem natus nihil, eum neque praesentium corrupti veritatis voluptates, dolore, quia quod minima delectus ad! Dolor vel totam animi repellendus vitae et, iste vero expedita numquam eum, ducimus, facere neque eaque amet quod nesciunt. Repudiandae quod velit eos quaerat ipsa numquam vitae placeat dolorem, sequi rerum. Neque rerum eum, doloribus voluptas nemo ut delectus illum tenetur officia ad unde earum eaque ipsa soluta maiores odit eveniet optio eius cumque assumenda et minus totam, velit explicabo! Voluptatem deserunt illo dicta! Mollitia quia ipsum quae incidunt, dolore cupiditate animi. Dolores dignissimos magni provident eum id! Odio nisi harum eveniet nobis quae aperiam odit. Pariatur nesciunt amet recusandae cupiditate vitae ratione, maiores fugiat! Rerum aspernatur voluptatum qui, aliquam illo porro nobis quis earum quod accusantium incidunt atque commodi sint, eius dolore quasi quae quibusdam labore in modi cum natus, laboriosam nisi! Deserunt dignissimos, rerum magni qui dolore pariatur incidunt nulla autem, natus soluta molestias quasi consectetur deleniti suscipit quibusdam consequatur veritatis! Nulla mollitia quam fugiat culpa molestias error nobis, atque deleniti qui expedita doloremque libero nostrum impedit accusamus tempore ipsam iure minima, omnis ullam quo assumenda iusto maxime. Consectetur, quas ab fuga vitae aut soluta sit voluptatum iste! Cum sed quia nesciunt reprehenderit repellat magnam numquam quis ea magni consectetur? Distinctio molestias mollitia eum deserunt fuga nesciunt voluptate accusantium, adipisci facilis nobis tempora nihil cupiditate voluptatum officia, asperiores totam? Odio dolorum, officiis ratione, facere dicta earum expedita nisi non consequuntur saepe recusandae laudantium perspiciatis aspernatur veniam natus quod?</p>
+
+  <br>
+  <!-- 2nd navbar  -->
+  
+
+  <!-- brands card -->
+  <h3 class="cards_heading">Brands</h3>
+  <div class="cards-list">
+
+    <div class="card 1">
+      <div class="card_image"> <img src="Brand_pic/CeraVe-logo-brand.jpg" > </div>
+    </div>
+    
+      <div class="card 2">
+      <div class="card_image">
+        <img src="Brand_pic/MAC-Cosmetics-brand-removebg-preview.jpg" >
+        </div>
+    </div>
+    
+    <div class="card 3">
+      <div class="card_image">
+        <img src="/Brand_pic/simple-brand.jpg">
+      </div>
+    </div>
+      
+    <div class="card 4">
+      <div class="card_image">
+        <img src="/Brand_pic/some-by-mi-brand.jpg" >
+      </div>
+    </div>
+    
+    <div class="card 5">
+      <div class="card_image">
+        <img src="/Brand_pic/Johnson-and-Johnson-brand-removebg-preview.jpg" >
+      </div>
+    </div>
+
+    <div class="card 6">
+      <div class="card_image">
+        <img src="/Brand_pic/Garnier-brand-removebg-preview.jpg" >
+      </div>
+    </div>
+
+    <div class="card 7">
+      <div class="card_image">
+        <img src="/Brand_pic/Lakme-brand-removebg-preview.jpg" >
+      </div>
+    </div>
+
+    <div class="card 8">
+      <div class="card_image">
+        <img src="/Brand_pic/La-Roche-Posay-brand-removebg-preview.jpg" >
+      </div>
+    </div>
+
+    <div class="card 9">
+      <div class="card_image">
+        <img src="/Brand_pic/The-Body-Shop-brand-removebg-preview.jpg" >
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Category  -->
+  <h3 class="cards_heading">Category</h3>
+  <div class="secound-card">
+    <div class="card-left">
+      <img class="card-image" src="/Category/Mother_Baby.jpg">
+      <p class="card-text"> Mother & Baby care</p>
+    </div>
+
+    <div class="card-right">
+      <img class="card-image" src="/Category/man.jpg">
+      <p class="card-text"> Man care</p>
+    </div>
+    <div class="card-right">
+      <img class="card-image" src="/Category/k_beauty.jpg">
+      <p class="card-text"> K-beauty Product</p>
+    </div>
+    <div class="card-left">
+      <img class="card-image" src="/Category/woman-makeup.jpg">
+      <p class="card-text"> Mekup items</p>
+    </div>
+  </div>
+
+<!-- skinn Problems -->
+  <h3 class="cards_heading">Skin Problems</h3>
+  <div class="profile-grid">
+    <div class="profile-card">
+        <img src="/skin_problems/Hair-Loss_1024x1024.webp" alt="User Profile" class="profile-image">
+        <div class="profile-content">
+            <div class="profile-name">Hair Fall</div>
+            <div class="profile-role">Solution</div>
+            <div class="social-links">
+                <a href="#" class="social-link">Click to see more</a>
+            </div>
+        </div>
+    </div>
+    <div class="profile-card">
+        <img src="/skin_problems/acne.jpg" alt="User Profile" class="profile-image">
+        <div class="profile-content">
+            <div class="profile-name">Acne</div>
+            <div class="profile-role">Tretment</div>
+            <div class="social-links">
+                <a href="#" class="social-link">Click to see more</a>
+            </div>
+        </div>
+    </div>
+    <div class="profile-card">
+      <img src="/skin_problems/dandruff-new.webp" alt="User Profile" class="profile-image">
+      <div class="profile-content">
+          <div class="profile-name">Dandruff</div>
+          <div class="profile-role">Tretment</div>
+          <div class="social-links">
+              <a href="#" class="social-link">Click to see more</a>
+          </div>
+      </div>
+  </div>
+  <div class="profile-card">
+    <img src="/skin_problems/rinkel2.png" alt="User Profile" class="profile-image">
+    <div class="profile-content">
+        <div class="profile-name">Anti-aging</div>
+        <div class="profile-role">Solution</div>
+        <div class="social-links">
+            <a href="#" class="social-link">Click to see more</a>
+        </div>
+    </div>
+</div>
+<div class="profile-card">
+  <img src="/skin_problems/dark_spot.webp" alt="User Profile" class="profile-image">
+  <div class="profile-content">
+      <div class="profile-name">Dark Spot</div>
+      <div class="profile-role">Tretment</div>
+      <div class="social-links">
+          <a href="#" class="social-link">Click to see more</a>
+      </div>
+  </div>
+</div>
+<div class="profile-card">
+  <img src="/skin_problems/sunburn-face-of-a-boy.webp" alt="User Profile" class="profile-image">
+  <div class="profile-content">
+      <div class="profile-name">Sunburn</div>
+      <div class="profile-role">Solution</div>
+      <div class="social-links">
+          <a href="#" class="social-link">Click to see more</a>
+      </div>
+  </div>
+</div>
+    <!-- Add more profile cards here -->
+</div>
+  
+  
+
+  <!-- footer  -->
+  <footer class="footer-sec">
+    <div class="main">
 
 
+      <div class="logo row">
+        <div class="footer-header">
+          <img src="/cover1.png" class="manik" alt="..." style="width: 200px;">
+        </div>
+        <div class="logo-des">
+          <p>We deliver othentic and orginal product. You can find all type of body product here. <br><br>For you:
+            <br>First blive in yoursel, be confident and accept what youu are.
+          </p>
+
+          <a href="#" class="btn-know">Know More</a>
+        </div>
+
+
+      </div>
+
+
+
+      <div class="office row">
+        <div class="footer-header">
+          <h3>Office</h3>
+        </div>
+        <div class="office-des">
+          <p>12 Sahed <br>Bappi Sharoni Rd,<br>Narayanganj</p>
+
+          <a href="#">nandonik.lover2003@gmail.com</a>
+
+          <p class="num">+880-1508934556</p>
+        </div>
+      </div>
+
+
+      <div class="link row">
+        <div class="footer-header">
+          <h3>Links</h3>
+        </div>
+
+        <div class="link-des">
+          <a href="#" class="footer-links">Home</a>
+          <a href="#" class="footer-links">About</a>
+          <a href="#" class="footer-links">Brands</a>
+          <a href="#" class="footer-links">Cart</a>
+          <a href="#" class="footer-links">Contact</a>
+        </div>
+
+      </div>
+
+
+      <div class="newsletter row">
+        <div class="footer-header">
+          <h3>Newsletter</h3>
+        </div>
+        <div class="newsletter-des">
+          <div class="input-field">
+            <input type="text" required spellcheck="false">
+            <label>Enter email</label>
+          </div>
+        </div>
+        <div class="icons">
+          <a href="#"><i class="social-icon ri-facebook-fill"></i></a>
+          <a href="#"><i class="social-icon ri-instagram-line"></i></a>
+          <a href="#"><i class="social-icon ri-linkedin-fill"></i></a>
+          <a href="#"><i class="social-icon ri-github-line"></i></a>
+
+        </div>
+        <div class="footer_bg">
+          <div class="footer_bg_one"></div>
+          <div class="footer_bg_two"></div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+    <div class="new_footer_top">
+      <div class="footer_bg">
+        <div class="footer_bg_one"></div>
+        <div class="footer_bg_two"></div>
+      </div>
+    </div>
+
+
+    <div class="copyright">
+
+      <p>© Copyright 2023 Moury.</p>
+    </div>
+
+  </footer>
 
 </body>
+
 </html>
