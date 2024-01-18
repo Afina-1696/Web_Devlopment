@@ -1,5 +1,5 @@
    .ProductDetails {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(245, 248, 245);
     width: 100vw;
     max-width: 100%;
     padding: 6vmax;
@@ -7,7 +7,7 @@
     display: flex;
   }
   
-  /*.ProductDetails > div {
+.ProductDetails > div {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -20,9 +20,9 @@
   
   .ProductDetails > div:last-child {
     align-items: flex-start;
-  } */
+  }
   
-     /*.CarouselImage {
+.CarouselImage {
     width: 20vmax;
   }
   
@@ -140,7 +140,7 @@
     transform: scale(1.1);
   }
   
-  .submitDialog {
+  /*.submitDialog {
     display: flex;
     flex-direction: column;
   }
@@ -150,7 +150,7 @@
     outline: none;
     padding: 1rem;
     font: 300 1rem "Roboto";
-  }
+  }*/
   
   .reviewsHeading {
     color: #000000be;
@@ -186,10 +186,17 @@
     color: rgba(0, 0, 0, 0.836);
     font: 600 0.9vmax "Roboto";
   }
-  .reviewCardComment {
-    color: rgba(0, 0, 0, 0.445);
+
+  .reviewCard > span{
+    color: rgba(0, 0, 0, 0.836);
     font: 300 0.8vmax cursive;
   }
+
+
+  /* .reviewCardComment {
+    color: rgba(0, 0, 0, 0.445);
+    font: 300 0.8vmax cursive;
+  } */
   
   .noReviews {
     font: 400 1.3vmax "Gill Sans";
@@ -275,10 +282,10 @@
       margin: 3vmax 0;
     }
   
-    .reviewCard > p {
+   /* .reviewCard > p {
       font: 600 3vw "Roboto";
     }
     .reviewCardComment {
       font: 300 5vw cursive;
-    }
-  } */
+    }*/
+  } 

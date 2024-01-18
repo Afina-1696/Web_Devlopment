@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect } from "react";
 import { FaMouse } from "react-icons/fa";
 import "./Home.css";
-import Product from "./Product.js";
+import Product from "./ProductCard.js";
 import MetaData from "../layout/MetaData";
-import { getProduct } from "../../actions/productAction";
+import { clearErrors, getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
@@ -12,13 +12,14 @@ const Home = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
   // Provide default values for properties to avoid 'undefined'
-  const { loading = false, error, products, productsCount } = useSelector(
+  const { loading = false, error, products } = useSelector(
     (state) => state.products || {}
   );
 
   useEffect(() => {
     if (error) {
-      return alert.error(error);
+      alert.error(error);
+      dispatch(clearErrors());
     }
     dispatch(getProduct());
   }, [dispatch, error, alert]);
