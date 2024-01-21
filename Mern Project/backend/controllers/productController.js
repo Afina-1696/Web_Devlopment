@@ -17,24 +17,30 @@ exports.createProduct = catchAsyncErrors(async (req,res,next)=>{
 });
 
 // Get All Product
-exports.getAllProducts = catchAsyncErrors(async(req,res, next)=>{
+exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
+  const resultPerPage = 8;
+  const productsCount = await Product.countDocuments();
 
-    const resultPerPage = 8;
-    const productsCount = await Product.countDocuments();
-
-    const apiFeature = new ApiFeatures(Product.find(),req.query)
+  const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
-    .filter()
-    .pagination(resultPerPage);
-    const products = await apiFeature.query;
+    .filter();
 
-    res.status(200).json({
-        success:true,
-        products,
-        productsCount,
-    });
-    
+
+    apiFeature.pagination(resultPerPage);
+
+    const products = await apiFeature.query;
+  
+    const filteredProductsCount = products.length;
+
+  res.status(200).json({
+    success: true,
+    products,
+    productsCount,
+    resultPerPage,
+    filteredProductsCount,
+  });
 });
+
 
 // Get product details
 exports.getProductDetails = catchAsyncErrors(async(req,res,next)=>{
