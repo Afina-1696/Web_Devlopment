@@ -8,10 +8,13 @@ import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+
+
 const Cart = ({ history }) => {
   const dispatch = useDispatch();
-  const { cartItems } = useSelector((state) => state.cart);
   const navigate = useNavigate();
+  const { cartItems } = useSelector((state) => state.cart);
+  
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
@@ -28,14 +31,22 @@ const Cart = ({ history }) => {
     }
     dispatch(addItemsToCart(id, newQty));
   };
+  
+  const {isAuthenticated } = useSelector(
+    (state) => state.user
+  );
 
   const deleteCartItems = (id) => {
     dispatch(removeItemsFromCart(id));
   };
 
-//   const checkoutHandler = () => {
-//     navigate("/login?redirect=shipping");
-//   };
+  const checkoutHandler = () => {
+    if (isAuthenticated) {
+      navigate("/shipping");
+    } else {
+      navigate("/login", { state: { redirect: "shipping" } });
+    }
+  };
 
   return (
     <Fragment>
@@ -97,8 +108,7 @@ const Cart = ({ history }) => {
               </div>
               <div></div>
               <div className="checkOutBtn">
-              <button>Check Out</button>
-                {/* <button onClick={checkoutHandler}>Check Out</button> */}
+                <button onClick={checkoutHandler}>Check Out</button>
               </div>
             </div>
           </div>

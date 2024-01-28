@@ -1,4 +1,6 @@
 import "./App.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Header from "./component/layout/Header/Header.js";
 import { BrowserRouter as Router,Route,Routes } from "react-router-dom";
 import WebFont from "webfontloader";
@@ -20,11 +22,25 @@ import UpdatePassword from "./component/User/UpdatePassword";
 import ForgotPassword from "./component/User/ForgotPassword";
 import ResetPassword from "./component/User/ResetPassword";
 import Cart from "./component/Cart/Cart"
+import Shipping from "./component/Cart/Shipping"
+import ConfirmOrder from "./component/Cart/ConfirmOrder"
+import Payment from "./component/Cart/Payment"
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import OrderSuccess from "./component/Cart/OrderSuccess.js"
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
-  React.useEffect(() => {
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/api/v1/stripeapikey");
+
+    setStripeApiKey(data.stripeApiKey);
+  }
+
+  useEffect(() => {
     WebFont.load({
       google: {
         families: ["Roboto", "Droid Sans", "Chilanka"],
@@ -32,6 +48,7 @@ function App() {
     });
 
     store.dispatch(loadUser());
+    getStripeApiKey();
   }, []);
 
 
@@ -39,6 +56,13 @@ function App() {
     <Router>
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
+
+{/* {stripeApiKey && (
+  <Elements stripe={loadStripe(stripeApiKey)}>
+    <ProtectedRoute exact path="/process/payment" component={Payment} />
+  </Elements>
+)} */}
+
       <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/product/:id" element={<ProductDetails/>} />
@@ -54,7 +78,14 @@ function App() {
       <Route path="/account" element={<Profile/>}/>
       <Route path="/me/update" element={<UpdateProfile/>}/>
       <Route path="/password/update" element={<UpdatePassword/>}/>
+      <Route path="/shipping" element={<Shipping/>}/>
+      <Route path="/order/confirm" element={<ConfirmOrder/>}/>
+      <Route path="/success" element={<OrderSuccess/>}/>
       </Route>
+
+      {stripeApiKey && (
+      <Route path="/process/payment" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Elements stripe={loadStripe(stripeApiKey)}><Payment /></Elements></ProtectedRoute>} />
+      )}
 
       </Routes>
       <Footer />
