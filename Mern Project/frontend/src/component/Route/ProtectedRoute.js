@@ -11,7 +11,7 @@ const ProtectedRoute = ({isAuthenticated, children,adminRoute,isAdmin }) => {
         return <Loader />;
       }
 
-    if (!isAuthenticated) {
+    if (isAuthenticated === false) {
     return <Navigate to={"/login"} />;}
 
 if(adminRoute  && !isAdmin){
