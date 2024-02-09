@@ -42,6 +42,9 @@ import ProductReviews from "./component/Admin/ProductReviews.js"
 import Contact from "./component/layout/Contact/Contact";
 import About from "./component/layout/About/About";
 import NotFound from "./component/layout/Not Found/NotFound.js";
+// import Category from "./component/Admin/Category";
+// import NewCategory from "./component/Admin/NewCategory"
+// import CategoryList from "./component/Admin/CategoryList"
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -103,6 +106,8 @@ function App() {
       <Route path="/admin/users" isAdmin={true} element={<UsersList/>}/>
       <Route path="/admin/user/:id" isAdmin={true} element={<UpdateUser/>}/>
       <Route path="/admin/reviews" isAdmin={true} element={<ProductReviews/>}/>
+      {/* <Route path="/admin/category" isAdmin={true} element={<NewCategory/>}/>
+      <Route path="/admin/categorylist" isAdmin={true} element={<CategoryList/>}/> */}
       </Route>
 
       {stripeApiKey && (

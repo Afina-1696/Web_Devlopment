@@ -8,7 +8,7 @@ import {FaShoppingCart} from "react-icons/fa";
 const Header = () => {
   return (
   <ReactNavbar
-  burgerColor= "blue"
+  burgerColor= "#381b12"
   burgerColorHover= "#eb4034"
   logo={logo}
   logoWidth= "20vmax"

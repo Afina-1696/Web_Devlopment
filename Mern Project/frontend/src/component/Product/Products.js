@@ -12,13 +12,10 @@ import MetaData from "../layout/MetaData";
 import { useParams } from "react-router-dom";
 
 const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+    "Mom & Baby care",
+    "K-Beauty",
+    "Man care",
+    "Mekup Items",
   ];
 
 const Products = ({ match }) =>{

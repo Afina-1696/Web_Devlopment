@@ -30,13 +30,10 @@ const NewProduct = () => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+    "Mom & Baby care",
+    "K-Beauty",
+    "Man care",
+    "Mekup Items",
   ];
 
   useEffect(() => {

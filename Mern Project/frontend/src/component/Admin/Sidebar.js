@@ -1,6 +1,6 @@
 import React from "react";
 import "./sidebar.css";
-import logo from "../../images/logo.png";
+import logo from "../../images/logo0.png";
 import { Link } from "react-router-dom";
 import { TreeView, TreeItem } from "@material-ui/lab";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -15,14 +15,17 @@ import RateReviewIcon from "@material-ui/icons/RateReview";
 const Sidebar = () => {
   return (
     <div className="sidebar">
+
       <Link to="/">
         <img src={logo} alt="Ecommerce" />
       </Link>
+
       <Link to="/admin/dashboard">
         <p>
           <DashboardIcon /> Dashboard
         </p>
       </Link>
+
       <Link>
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
@@ -39,23 +42,49 @@ const Sidebar = () => {
           </TreeItem>
         </TreeView>
       </Link>
+
       <Link to="/admin/orders">
         <p>
           <ListAltIcon />
           Orders
         </p>
       </Link>
+
       <Link to="/admin/users">
         <p>
           <PeopleIcon /> Users
         </p>
       </Link>
+
       <Link to="/admin/reviews">
         <p>
           <RateReviewIcon />
           Reviews
         </p>
       </Link>
+
+    {/* <Link>
+      <TreeView
+          defaultCollapseIcon={<ExpandMoreIcon />}
+          defaultExpandIcon={<ImportExportIcon />}
+        >
+          <TreeItem nodeId="1" label="Category">
+            <Link to="/admin/categorylist">
+              <TreeItem nodeId="2" label="All" icon={<PostAddIcon />} />
+            </Link>
+
+            <Link to="/admin/category">
+              <TreeItem nodeId="3" label="Create" icon={<AddIcon />} />
+            </Link>
+          </TreeItem>
+        </TreeView>
+      </Link> */}
+      {/* <Link to="/admin/category">
+        <p>
+          <RateReviewIcon />
+          Category
+        </p>
+      </Link> */}
     </div>
   );
 };

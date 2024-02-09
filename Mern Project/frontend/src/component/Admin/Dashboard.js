@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../actions/productAction";
 import { getAllOrders } from "../../actions/orderAction.js";
 import { getAllUsers } from "../../actions/userAction.js";
+// import { getCategories } from "../../actions/categoryAction.js"
 import MetaData from "../layout/MetaData";
 
 Chart.register(CategoryScale, LinearScale, ArcElement);
@@ -24,6 +25,8 @@ const Dashboard = () => {
 
   const { users } = useSelector((state) => state.allUsers);
 
+  // const { category } = useSelector((state) => state.category);
+
   let outOfStock = 0;
 
   products &&
@@ -37,6 +40,7 @@ const Dashboard = () => {
     dispatch(getAdminProduct());
     dispatch(getAllOrders());
     dispatch(getAllUsers());
+    // dispatch(getCategories());
   }, [dispatch]);
 
   let totalAmount = 0;
@@ -118,6 +122,10 @@ const lineState = {
               <p>Users</p>
               <p>{users && users.length}</p>
             </Link>
+          {/* <Link to="/admin/category">
+            <p>Category</p>
+            <p>{category && category.length}</p>
+            </Link> */}
           </div>
         </div>
 
