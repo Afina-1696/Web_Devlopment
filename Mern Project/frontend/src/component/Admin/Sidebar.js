@@ -12,28 +12,41 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import PeopleIcon from "@material-ui/icons/People";
 import RateReviewIcon from "@material-ui/icons/RateReview";
 
+
+
+
 const Sidebar = () => {
+ 
+  const image ={
+    paddingTop: `4rem`,
+    paddingLeft: `1rem`,
+    width: `50%`,
+    transition: `all 0.5s`,
+    filter: `drop-shadow(0 0 10px tomato)`,
+  }
   return (
+
     <div className="sidebar">
-
-      <Link to="/">
-        <img src={logo} alt="Ecommerce" />
+      <div>
+      <Link to="/" >
+        <img src={logo} alt="Ecommerce" style={image} />
       </Link>
-
+     
       <Link to="/admin/dashboard">
         <p>
-          <DashboardIcon /> Dashboard
+          <span className="fa fa-2x"> <DashboardIcon /></span>
+           <span className="nav-text">Dashboard</span>
         </p>
       </Link>
 
       <Link>
-        <TreeView
+        <TreeView className="fa fa-2x"
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ImportExportIcon />}
         >
-          <TreeItem nodeId="1" label="Products">
+          <TreeItem nodeId="1" className="product" label="Products">
             <Link to="/admin/products">
-              <TreeItem nodeId="2" label="All" icon={<PostAddIcon />} />
+              <TreeItem nodeId="2"  label="All" icon={<PostAddIcon />} />
             </Link>
 
             <Link to="/admin/product">
@@ -45,21 +58,27 @@ const Sidebar = () => {
 
       <Link to="/admin/orders">
         <p>
-          <ListAltIcon />
-          Orders
+        <span className="fa fa-2x"><ListAltIcon /></span>
+         <span className="nav-text">Orders</span>
         </p>
       </Link>
+      
+
+
 
       <Link to="/admin/users">
         <p>
-          <PeopleIcon /> Users
+        <span className="fa fa-2x"><PeopleIcon /></span>
+          <span className="nav-text">Users</span>
         </p>
       </Link>
+      
 
+     
       <Link to="/admin/reviews">
         <p>
-          <RateReviewIcon />
-          Reviews
+          <span className="fa fa-2x"><RateReviewIcon /></span>
+          <span className="nav-text">Reviews</span>
         </p>
       </Link>
 
@@ -85,7 +104,8 @@ const Sidebar = () => {
           Category
         </p>
       </Link> */}
-    </div>
+      </div>
+      </div>
   );
 };
 

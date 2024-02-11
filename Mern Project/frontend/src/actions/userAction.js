@@ -38,6 +38,11 @@ import {
 } from "../constants/userConstants";
 import axios from "axios";
 
+export const loginSuccess = (user) => ({
+  type: LOGIN_SUCCESS,
+  payload: user,
+});
+
 // Login
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -45,13 +50,22 @@ export const login = (email, password) => async (dispatch) => {
   
       const config = { headers: { "Content-Type": "application/json" } };
   
-      const { data } = await axios.post(
+      const { data} = await axios.post(
         `/api/v1/login`,
         { email, password },
         config
-      );
+      ); 
   
       dispatch({ type: LOGIN_SUCCESS, payload: data.user });
+      
+
+       // Redirect based on user role
+       const redirectPath = data.user?.role === 'admin'
+       ? '/admin/dashboard'
+       : '/account';
+ 
+       return redirectPath;
+
     } catch (error) {
       dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
     }

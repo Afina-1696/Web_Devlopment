@@ -9,11 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 
-const LoginSignUp = ({location }) => {
+
+const LoginSignUp = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const alert = useAlert();
 
-    const { error, loading, isAuthenticated } = useSelector(
+    const { error, loading } = useSelector(
         (state) => state.user
       );
     
@@ -28,6 +30,7 @@ const LoginSignUp = ({location }) => {
         name: "",
         email: "",
         password: "",
+        role: "",
       });
 
     const { name, email, password } = user;
@@ -35,9 +38,17 @@ const LoginSignUp = ({location }) => {
     const [avatar, setAvatar] = useState("/Profile.png");
     const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
-    const loginSubmit = (e) => {
+    const loginSubmit = async(e) => {
         e.preventDefault();
-        dispatch(login(loginEmail, loginPassword));
+        try {
+          const redirectPath = await dispatch(login(loginEmail, loginPassword));
+      
+          if (redirectPath) { // Check if valid redirect path returned
+            navigate(redirectPath);
+          }
+        } catch (error) {
+          // ... handle error
+        }
       };
 
     const registerSubmit = (e) => {
@@ -71,18 +82,26 @@ const LoginSignUp = ({location }) => {
 
       // const redirect = location?.search ? location.search.split("=")[1] : "/account";
 
-      const redirect = location?.state?.redirect || "/account";
-      const navigate = useNavigate();
+      // const redirect = location?.state?.redirect || "/account";
+      // const redirect2 = location?.state?.redirect || "/admin/dashboard";
+    
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
 
-    if (isAuthenticated) {
-      navigate(redirect);
-    }
-  }, [dispatch, error, alert, navigate, isAuthenticated, redirect]);
+    // if (isAuthenticated) {
+    //   if (user && user.role === 'admin') {
+    //     // Redirect to the admin dashboard if the user is an admin ../Admin/MainDashboard
+    //     navigate(redirect2);
+    //   } else {
+    //     // Redirect to the regular user account page
+    //     navigate(redirect1);
+    //   }
+    // }
+    // navigate, isAuthenticated, redirect, redirect2,user
+  }, [dispatch, error, alert, ]);
 
     const switchTabs = (e, tab) => {
         if (tab === "login") {

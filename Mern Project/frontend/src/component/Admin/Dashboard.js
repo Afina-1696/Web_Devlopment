@@ -99,6 +99,7 @@ const lineState = {
     <div className="dashboard">
       <MetaData title="Dashboard - Admin Panel" />
       <Sidebar />
+      <div className="sidebar1"></div>
 
       <div className="dashboardContainer">
         <Typography component="h1">Dashboard</Typography>
