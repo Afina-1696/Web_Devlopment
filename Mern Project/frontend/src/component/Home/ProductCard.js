@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
           ({product.numOfReviews} Reviews)
         </span>
       </div>
-      <button class="buy-1">See Details</button>
+      <button className="buy-1">See Details</button>
       
     </Link>
   );

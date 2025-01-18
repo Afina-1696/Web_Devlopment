@@ -1,11 +1,11 @@
 .newProductContainer {
-    width: 100%;
+    /* width: 100%;
     box-sizing: border-box;
     background-color: rgb(221, 221, 221);
-    border-left: 1px solid rgba(0, 0, 0, 0.158);
+    border-left: 1px solid rgba(0, 0, 0, 0.158); */
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 94vh;
   }
   .newProductContainer h1 {
     color: rgba(0, 0, 0, 0.733);
@@ -20,8 +20,8 @@
     margin: auto;
     padding: 3vmax;
     justify-content: space-evenly;
-    height: 70%;
-    width: 40vh;
+    height: 90%;
+    /* width: 40vh; */
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
   }
@@ -76,7 +76,7 @@
   
   #createProductFormImage {
     width: 100%;
-    overflow: auto;
+    overflow: visible;
   }
   
   #createProductFormImage > img {
@@ -102,9 +102,9 @@
   }
   
   @media screen and (max-width: 600px) {
-    .newProductContainer {
+    /* .newProductContainer {
       background-color: rgb(255, 255, 255);
-    }
+    } */
     .createProductForm {
       padding: 5vmax;
     }

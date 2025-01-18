@@ -1,11 +1,13 @@
 .ProductDetails {
   background-color: rgb(255, 255, 255);
   width: 100vw;
+  height: 45vw;
   max-width: 100%;
   padding: 6vmax;
   box-sizing: border-box;
   display: flex;
 }
+
 
 .ProductDetails > div {
   width: 100%;
@@ -18,13 +20,19 @@
   border: 1px solid white;
 }
 
+.carousel > img {
+  max-width: 75% !important;
+  height: 100% !important;
+}
+
 .ProductDetails > div:last-child {
   align-items: flex-start;
 }
 
-.CarouselImage {
+/* .CarouselImage {
+  overflow: auto !important;
   width: 20vmax;
-}
+} */
 
 .detailsBlock-1 > h2 {
   color: rgb(54, 54, 54);
@@ -80,7 +88,7 @@
 .detailsBlock-3-1-1 > input {
   border: none;
   padding: 0.5vmax;
-  width: 1vmax;
+  width: 3vmax;
   text-align: center;
   outline: none;
   font: 400 0.8vmax "Roboto";

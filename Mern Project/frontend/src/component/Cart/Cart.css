@@ -17,7 +17,7 @@
   }
   .emptyCart > a {
     background-color: rgb(51, 51, 51);
-    color: white;
+    color: white !important;
     border: none;
     padding: 1vmax 3vmax;
     cursor: pointer;
@@ -26,6 +26,8 @@
   }
   
   .cartPage {
+    position: relative;
+    top: 4rem;
     padding: 5vmax;
   }
   
@@ -74,7 +76,7 @@
   .cartInput > input {
     border: none;
     padding: 0.5vmax;
-    width: 1vmax;
+    width: 3vmax;
     text-align: center;
     outline: none;
     font: 400 0.8vmax "Roboto";

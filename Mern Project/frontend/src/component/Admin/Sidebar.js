@@ -1,111 +1,184 @@
-import React from "react";
+import React, { useState } from "react";
 import "./sidebar.css";
-import logo from "../../images/logo0.png";
+// import { useMediaQuery } from 'react-responsive';
 import { Link } from "react-router-dom";
-import { TreeView, TreeItem } from "@material-ui/lab";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import PostAddIcon from "@material-ui/icons/PostAdd";
-import AddIcon from "@material-ui/icons/Add";
-import ImportExportIcon from "@material-ui/icons/ImportExport";
-import ListAltIcon from "@material-ui/icons/ListAlt";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import PeopleIcon from "@material-ui/icons/People";
-import RateReviewIcon from "@material-ui/icons/RateReview";
+import Logo from "../../images/logo0.png";
+import { UilBars } from "@iconscout/react-unicons";
+import { motion } from "framer-motion";
+import {
+  UilEstate,
+  UilClipboardAlt,
+  UilUsersAlt,
+  UilPackage,
+  UilSignOutAlt,
+  UilAngleDown,
+  UilAngleRight,
+  UilUserCircle,
+} from "@iconscout/react-unicons";
 
 
+import { useNavigate } from "react-router-dom";
+import { useAlert } from "react-alert";
+import { logout } from "../../actions/userAction";
+import { useDispatch } from "react-redux";
 
+
+const SidebarData = [
+  {
+    icon: <UilEstate/>,
+    heading: "Dashboard",
+    path: "/admin/dashboard",
+  },
+  {
+    icon: <UilClipboardAlt/>,
+    heading: "Orders",
+    path: "/admin/orders"
+  },
+  {
+    icon: <UilUsersAlt/>,
+    heading: "Users",
+    path: "/admin/users"
+  },
+  {
+    icon: <UilPackage/>,
+    heading: 'Products',
+    // path: '/admin/products',
+    subitems: [
+      { heading: "All Products List", 
+        path: "/admin/products" },
+      { heading: "Create Product", 
+        path: "/admin/product" },
+    ],
+  },
+  {
+    icon: <UilUserCircle/>,
+    heading: 'My Profile',
+    path: "/admin/account"
+  },
+];
 
 const Sidebar = () => {
- 
-  const image ={
-    paddingTop: `4rem`,
-    paddingLeft: `1rem`,
-    width: `50%`,
-    transition: `all 0.5s`,
-    filter: `drop-shadow(0 0 10px tomato)`,
+  const [selected, setSelected] = useState(0);
+
+  const [expanded, setExpanded] = useState(true);
+
+  const [expandedProducts, setExpandedProducts] = useState(true);
+
+  const navigate = useNavigate();
+  const alert = useAlert();
+  const dispatch = useDispatch();
+
+  // const isMobile = useMediaQuery({ maxWidth: 768 });
+
+  const sidebarVariants = {
+    true: {
+      left : '0'
+    },
+    false:{
+      left : '-60%'
+    }
   }
+
+  const handleProductClick = (item) => {
+    setExpandedProducts(!expandedProducts);
+  
+  };
+
+  const logoutUser = () => {
+    dispatch(logout());
+    alert.success("Logout Successfully");
+    navigate("/");
+  }
+
+  
+  const handleBarClick = () => {
+    setExpanded(!expanded);
+  };
+  const screenWidth = window.innerWidth;
+  const calculateLeftPosition = () => {
+    if (screenWidth <= 786) {
+      return expanded ? '60%' : '5%'; //on small screens
+    } else {
+      return expanded ? '31%' : '5%'; //on larger screens
+    }
+  };
+
+  const leftStyle = {
+    left: calculateLeftPosition()
+  };
+  // console.log(window.innerWidth)
   return (
-
-    <div className="sidebar">
-      <div>
-      <Link to="/" >
-        <img src={logo} alt="Ecommerce" style={image} />
-      </Link>
-     
-      <Link to="/admin/dashboard">
-        <p>
-          <span className="fa fa-2x"> <DashboardIcon /></span>
-           <span className="nav-text">Dashboard</span>
-        </p>
-      </Link>
-
-      <Link>
-        <TreeView className="fa fa-2x"
-          defaultCollapseIcon={<ExpandMoreIcon />}
-          defaultExpandIcon={<ImportExportIcon />}
-        >
-          <TreeItem nodeId="1" className="product" label="Products">
-            <Link to="/admin/products">
-              <TreeItem nodeId="2"  label="All" icon={<PostAddIcon />} />
-            </Link>
-
-            <Link to="/admin/product">
-              <TreeItem nodeId="3" label="Create" icon={<AddIcon />} />
-            </Link>
-          </TreeItem>
-        </TreeView>
-      </Link>
-
-      <Link to="/admin/orders">
-        <p>
-        <span className="fa fa-2x"><ListAltIcon /></span>
-         <span className="nav-text">Orders</span>
-        </p>
-      </Link>
-      
-
-
-
-      <Link to="/admin/users">
-        <p>
-        <span className="fa fa-2x"><PeopleIcon /></span>
-          <span className="nav-text">Users</span>
-        </p>
-      </Link>
-      
-
-     
-      <Link to="/admin/reviews">
-        <p>
-          <span className="fa fa-2x"><RateReviewIcon /></span>
-          <span className="nav-text">Reviews</span>
-        </p>
-      </Link>
-
-    {/* <Link>
-      <TreeView
-          defaultCollapseIcon={<ExpandMoreIcon />}
-          defaultExpandIcon={<ImportExportIcon />}
-        >
-          <TreeItem nodeId="1" label="Category">
-            <Link to="/admin/categorylist">
-              <TreeItem nodeId="2" label="All" icon={<PostAddIcon />} />
-            </Link>
-
-            <Link to="/admin/category">
-              <TreeItem nodeId="3" label="Create" icon={<AddIcon />} />
-            </Link>
-          </TreeItem>
-        </TreeView>
-      </Link> */}
-      {/* <Link to="/admin/category">
-        <p>
-          <RateReviewIcon />
-          Category
-        </p>
-      </Link> */}
+    <>
+      <div className="bars" style={leftStyle} onClick={handleBarClick}>
+        <UilBars />
       </div>
+    <motion.div className='sidebar'
+    variants={sidebarVariants}
+    animate={expanded ? 'true' : 'false'}
+    >
+      {/* logo */}
+      <div className="logo">
+        <img src={Logo} alt="logo" />
+        <span>
+          Nand<span>o</span>nik
+        </span>
       </div>
+
+       <div className="menu">
+          {SidebarData.map((item, index) => (
+            <div key={index}>
+              {item.subitems ? (
+                <>
+                  <div
+                    className={
+                      selected === index ? "menuItem active" : "menuItem"
+                    }
+                    onClick={handleProductClick}
+                  >
+                    {item.icon}
+                    <span>{item.heading}</span>
+                    {expandedProducts ? <UilAngleDown /> : <UilAngleRight />}
+                  </div>
+                  {expandedProducts &&
+                    item.subitems.map((subitem, subindex) => (
+                      <Link to={subitem.path} key={subindex}>
+                        <div
+                          className={
+                            selected === subindex
+                              ? "menuItem subitem active"
+                              : "menuItem subitem"
+                          }
+                          onClick={() => setSelected(subindex)}
+                        >
+                          <span>{subitem.heading}</span>
+                        </div>
+                      </Link>
+                    ))}
+                </>
+              ) : (
+                <Link to={item.path}>
+                  <div
+                    className={
+                      selected === index ? "menuItem active" : "menuItem"
+                    }
+                    onClick={() => setSelected(index)}
+                  >
+                    {item.icon}
+                    <span>{item.heading}</span>
+                  </div>
+                </Link>
+              )}
+            </div>
+          ))}
+          {/* signoutIcon */}
+          <div className="menuItem" onClick={logoutUser}>
+            <UilSignOutAlt />
+            <span>Logout</span>
+          </div>
+        </div>
+
+    </motion.div>
+    </>
   );
 };
 

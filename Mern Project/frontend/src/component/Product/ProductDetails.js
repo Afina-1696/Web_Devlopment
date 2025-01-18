@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Carousel from "react-material-ui-carousel";
+// import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -109,18 +109,22 @@ const ProductDetails = () => {
         <Fragment>
           <MetaData title={`${product.name} -- ECOMMERCE`} />
           <div className="ProductDetails">
-            <div>
-              <Carousel>
+            <div className="carousel w-full" >
                 {product.images &&
                   product.images.map((item, i) => (
                     <img
-                      className="CarouselImage"
+                      className="w-full"
                       key={i}
                       src={item.url}
                       alt={`${i} Slide`}
                     />
                   ))}
-              </Carousel>
+                  <div className="flex justify-center w-full py-2 gap-2">
+                  <a href="#item1" className="btn btn-xs">1</a> 
+                  <a href="#item2" className="btn btn-xs">2</a> 
+                  <a href="#item3" className="btn btn-xs">3</a> 
+                  <a href="#item4" className="btn btn-xs">4</a>
+                  </div>
             </div>
 
             <div>

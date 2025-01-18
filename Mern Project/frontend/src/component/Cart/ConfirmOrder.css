@@ -1,5 +1,7 @@
 .confirmOrderPage {
     height: 100vh;
+    position: relative;
+    top: 4rem;
     background-color: white;
     display: grid;
     grid-template-columns: 6fr 3fr;
@@ -110,6 +112,8 @@
   
   .orderSummary > button {
     background-color: tomato;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.301);
+    border-radius: 1rem;
     color: white;
     width: 100%;
     padding: 1vmax;

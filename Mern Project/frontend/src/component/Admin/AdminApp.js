@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import store from "../../store";
 import { loadUser } from "../../actions/userAction";
 
+import Home from "../Home/Home"
 import ProtectedRoute from "../Route/ProtectedRoute";
 import Dashboard from "./Dashboard"
 import ProductList from "./ProductList"
@@ -32,6 +33,7 @@ const MainDashboard = () => {
   return (
     <Router>
               <Routes>
+              <Route path="/" element={<Home />} />
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
     <Route isAdmin={true} path="/admin/dashboard" element={<Dashboard/>}/>
       <Route path="/admin/products" isAdmin={true} element={<ProductList/>}/>

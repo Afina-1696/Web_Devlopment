@@ -7,7 +7,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { logout } from "../../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,11 @@ const UserOptions = ({ user }) => {
   const navigate = useNavigate();
   const alert = useAlert();
   const dispatch = useDispatch();
+  const location = useLocation();
+
+    
+  const showuser = 
+  !location.pathname.startsWith("/admin");
 
   const options = [
     { icon: <ListAltIcon />, name: "Orders", func: orders },
@@ -64,6 +69,8 @@ const UserOptions = ({ user }) => {
   }
 
   return (
+    <>
+    {showuser  &&(
     <Fragment>
       <Backdrop open={open} style={{ zIndex: "10" }} />
       <SpeedDial
@@ -93,6 +100,8 @@ const UserOptions = ({ user }) => {
         ))}
       </SpeedDial>
     </Fragment>
+    )}
+    </>
   );
 };
 

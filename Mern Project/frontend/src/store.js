@@ -28,10 +28,12 @@ import {
   orderDetailsReducer,
   orderReducer,
 } from "./reducers/orderReducer";
-// import { 
-//   categoryReducer, 
-//   // newCategoryReducer, 
-// } from "./reducers/categoryReducer";
+import { 
+  newCategoryReducer,
+  categoryDetailsReducer, 
+  categoryReducer,
+  categorysReducer,
+} from "./reducers/categoryReducer";
 
 const reducer = combineReducers({
     products: productsReducer,
@@ -52,8 +54,10 @@ const reducer = combineReducers({
     userDetails: userDetailsReducer,
     productReviews: productReviewsReducer,
     review: reviewReducer,
-    // category: categoryReducer,
-    // newCategory: newCategoryReducer,
+    category: categoryReducer,
+    newCategory: newCategoryReducer,
+    categoryDetails: categoryDetailsReducer,
+    categorys: categorysReducer,
 });
 
 let initialState = {

@@ -80,7 +80,7 @@
     border: none;
     background-color: rgb(68, 68, 68);
     font: 400 1vmax "Roboto";
-    color: white;
+    color: white !important;
     text-decoration: none;
     padding: 0.5vmax;
     text-align: center;

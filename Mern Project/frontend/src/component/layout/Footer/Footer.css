@@ -1,13 +1,194 @@
 footer {
-    margin-top: 10vmax;
     padding: 2vmax;
-    background-color: rgb(34, 33, 33);
+    background-image: linear-gradient(90deg, #4b391f 0%, #f5b658 100%);
     color: white;
-    display: flex;
+    position: relative;
+    border-top-left-radius: 70px;
+    display: inline-block;
     align-items: center;
   }
+
+  .main1 {
+    margin: 50px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    /* grid-template-rows: 1fr 1fr; */
+  }
+
+  /* .image5 {
+    width: 200px !important;
+  } */
   
-  .leftFooter {
+  @media (max-width:960px) {
+    footer {
+      width: 100%;
+      top: 120px;
+    }
+
+  
+
+  .row {
+    margin-top: 50px;
+  }
+
+  .logo_brand {
+    grid-column: 1/3
+  }
+
+  .office {
+    grid-column: 3/5;
+  }
+
+  .link {
+    grid-column: 1/3;
+  }
+}
+
+@media (max-width:660px) {
+  .main {
+    gap: 10px;
+    margin: 0;
+
+  }
+
+  .icons {
+    display: flex;
+  }
+
+  .row {
+    grid-column: 1/4;
+  }
+}
+  
+.footer-header {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.footer-header > h1 {
+  color: #423016;
+  /* font-size: 2.5rem; */
+}
+
+.office-des {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.office a {
+  text-decoration: none;
+  color: #98A8F8;
+
+}
+
+.office a:hover {
+  color: #fff;
+}
+
+.num {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* .btn-know {
+  text-decoration: none;
+  background-color: transparent;
+  padding: 10px;
+  position: relative;
+  top: 30px;
+  background-color: transparent;
+  border: 1px solid #98A8F8;
+  color: #98A8F8;
+  text-transform: uppercase;
+  border-radius: 10px;
+
+}
+
+.btn-know:hover {
+  color: white;
+  background-color: #98A8F8;
+  transition: linear 0.3s;
+} */
+
+.btn-know {
+  text-decoration: none;
+  background-color: transparent; 
+  border: 1px solid #98A8F8;
+  color: #98A8F8;
+  text-transform: uppercase;
+  border-radius: 10px;
+  padding: 10px;
+   /* position: relative; */
+  margin-top: 10px;
+  cursor: pointer; 
+  transition: all 0.3s;
+}
+
+.btn-know:hover {
+  color: white;
+  border: 1px solid #009688;
+  background-color: #009688;
+  /* transition: all 0.3s; */
+}
+
+
+.link-des div{
+  margin-bottom: 0px;
+}
+.link-des {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+}
+.link-des a:hover {
+  color: #FB2576;
+  transition: linear 0.3s;
+}
+
+.copyright {
+  text-align: center;
+}
+
+hr {
+  width: 90%;
+  margin: 2px auto;
+  opacity: 40%;
+  border: 0.01px solid white;
+
+}
+
+.copyright p {
+  padding: 20px;
+}
+.new_footer_top .footer_bg {
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+  background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigB8iI5tb8WSVBuVUGc9UjjB8O0708X7Fdic_4O1LT4CmLHoiwhanLXiRhe82yw0R7LgACQ2IhZaTY0hhmGi0gYp_Ynb49CVzfmXtYHUVKgXXpWvJ_oYT8cB4vzsnJLe3iCwuzj-w6PeYq_JaHmy_CoGoa6nw0FBo-2xLdOPvsLTh_fmYH2xhkaZ-OGQ/s16000/footer_bg.png") no-repeat scroll center 0;
+  width: 100%;
+  height: 300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* .leftFooter {
     width: 20%;
     display: flex;
   
@@ -70,4 +251,4 @@ footer {
   
   .rightFooter > a:hover {
     color: #eb4034;
-  }
+  } */

@@ -23,6 +23,9 @@ const CheckoutSteps = ({ activeStep }) => {
 
   const stepStyles = {
     boxSizing: "border-box",
+    position: "relative",
+    background: "none",
+    top: "4rem",
   };
 
   return (

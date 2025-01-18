@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "./productList.css";
+import Loader from "../layout/Loader/Loader";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
@@ -23,7 +24,7 @@ const OrderList = () => {
 
   const alert = useAlert();
 
-  const { error, orders } = useSelector((state) => state.allOrders);
+  const { error, orders, loading} = useSelector((state) => state.allOrders);
 
   const { error: deleteError, isDeleted } = useSelector((state) => state.order);
 
@@ -52,13 +53,13 @@ const OrderList = () => {
   }, [dispatch, alert, error, deleteError, navigate, isDeleted]);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+    { field: "id", headerName: "Order ID", minWidth: 100, flex: 0.5 },
 
     {
       field: "status",
       headerName: "Status",
       minWidth: 150,
-      flex: 0.5,
+      flex: 0.2,
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Delivered"
           ? "greenColor"
@@ -91,6 +92,10 @@ const OrderList = () => {
       renderCell: (params) => {
         return (
           <Fragment>
+          {loading ? (
+            <Loader />
+          ) : (
+          <Fragment>
             <Link to={`/admin/order/${params.getValue(params.id, "id")}`}>
               <EditIcon />
             </Link>
@@ -103,6 +108,8 @@ const OrderList = () => {
               <DeleteIcon />
             </Button>
           </Fragment>
+           )}
+           </Fragment>
         );
       },
     },
@@ -122,6 +129,10 @@ const OrderList = () => {
 
   return (
     <Fragment>
+    {loading ? (
+      <Loader />
+    ) : (
+    <Fragment>
       <MetaData title={`ALL ORDERS - Admin`} />
 
       <div className="dashboard">
@@ -139,6 +150,8 @@ const OrderList = () => {
           />
         </div>
       </div>
+    </Fragment>
+    )}
     </Fragment>
   );
 };

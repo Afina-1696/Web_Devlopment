@@ -1,13 +1,23 @@
 .paymentContainer {
-    display: grid;
+    position: relative;
+    top: 4rem;
+    /* width: 100vw; */
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
     place-items: center;
-    background-color: rgb(255, 255, 255);
-    height: 65vh;
+    /* background-color: rgb(255, 255, 255); */
+    height: 80vh;
     margin: 2vmax;
+    padding-bottom: 5rem;
   }
   
   .paymentForm {
-    width: 22%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: .4s;
+    background-color: white;
+    width: 31%;
+    padding: 2rem;
     height: 100%;
   }
   
@@ -45,8 +55,10 @@
   }
   
   .paymentFormBtn {
-    border: none;
-    background-color: tomato;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.301);
+      transition: .4s;
+    border-radius: 1rem;
+    background-color: tomato !important;
     color: white;
     font: 300 0.9vmax "Roboto";
     width: 100%;

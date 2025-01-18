@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import Sidebar from "./Sidebar.js";
 import "./dashboard.css";
+import Loader from "../layout/Loader/Loader";
 import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { Doughnut, Line } from "react-chartjs-2";
@@ -11,6 +12,8 @@ import { getAdminProduct } from "../../actions/productAction";
 import { getAllOrders } from "../../actions/orderAction.js";
 import { getAllUsers } from "../../actions/userAction.js";
 // import { getCategories } from "../../actions/categoryAction.js"
+
+import icon1  from "../../images/Dashboard_icon/pic1.png";
 import MetaData from "../layout/MetaData";
 
 Chart.register(CategoryScale, LinearScale, ArcElement);
@@ -19,7 +22,7 @@ Chart.register(CategoryScale, LinearScale, ArcElement);
 const Dashboard = () => {
   const dispatch = useDispatch();
 
-  const { products } = useSelector((state) => state.products);
+  const { products, loading} = useSelector((state) => state.products);
 
   const { orders } = useSelector((state) => state.allOrders);
 
@@ -54,7 +57,7 @@ const lineState = {
     datasets: [
       {
         label: "TOTAL AMOUNT",
-        backgroundColor: ["tomato"],
+        backgroundColor: ["#f0b357"],
         hoverBackgroundColor: ["rgb(197, 72, 49)"],
         data: [0, totalAmount],
       },
@@ -96,17 +99,23 @@ const lineState = {
   
 
   return (
-    <div className="dashboard">
+    <Fragment>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+           <div className="dashboard">
       <MetaData title="Dashboard - Admin Panel" />
       <Sidebar />
-      <div className="sidebar1"></div>
+      {/* <div className="sidebar1"></div> */}
 
       <div className="dashboardContainer">
-        <Typography component="h1">Dashboard</Typography>
+        <Typography component="h1">Admin Dashboard</Typography>
 
         <div className="dashboardSummary">
           <div>
             <p>
+              <img  className="maro" src={icon1}  alt="" />
               Total Amount <br /> ৳{totalAmount}
             </p>
           </div>
@@ -130,6 +139,7 @@ const lineState = {
           </div>
         </div>
 
+        <div className="chart">
         <div className="lineChart">
           <Line data={lineState} />
         </div>
@@ -137,8 +147,15 @@ const lineState = {
         <div className="doughnutChart">
           <Doughnut data={doughnutState} />
         </div>
+        </div>
       </div>
     </div>
+    
+        </Fragment>
+      )}
+    </Fragment>
+    
+     
   );
 };
 

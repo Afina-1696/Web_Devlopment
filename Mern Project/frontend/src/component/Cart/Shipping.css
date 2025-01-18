@@ -5,12 +5,19 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
+    top: 1rem;
+    padding-bottom: 8rem;
   }
   
   .shippingBox {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: .4s;
+    position: relative;
+    top: 4rem;
     background-color: white;
     width: 25vw;
-    height: 90vh;
+    height: 78vh;
     box-sizing: border-box;
     overflow: hidden;
   }
@@ -62,8 +69,11 @@
   }
   
   .shippingBtn {
-    border: none;
-    background-color: tomato;
+    /* border: none; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.301);
+      transition: .4s;
+    border-radius: 1rem;
+    background-color: tomato !important;
     color: white;
     font: 300 1vmax "Roboto";
     width: 100%;

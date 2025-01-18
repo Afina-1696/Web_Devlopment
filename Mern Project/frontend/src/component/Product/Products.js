@@ -36,7 +36,7 @@ const Products = ({ match }) =>{
         error,
         productsCount,
         resultPerPage,
-        filteredProductsCount,
+        // filteredProductsCount,
       } = useSelector((state) => state.products);
 
     // const keyword = match.params.keyword;
@@ -49,7 +49,7 @@ const Products = ({ match }) =>{
       const priceHandler = (event, newPrice) => {
         setPrice(newPrice);
       };
-      let count = filteredProductsCount;
+      // let count = filteredProductsCount;
 
     useEffect(() => {
         if (error) {
@@ -79,8 +79,11 @@ const Products = ({ match }) =>{
           </div>
 
           <div className="filterBox">
-            <Typography>Price</Typography>
+            <div className="box">
+            <Typography className="heading">Price Filter</Typography>
+            <p className="small">৳{price[0]} - ৳{price[1]}</p>
             <Slider
+            className="priceSlider"
               value={price}
               onChange={priceHandler}
               valueLabelDisplay="auto"
@@ -88,8 +91,10 @@ const Products = ({ match }) =>{
               min={0}
               max={25000}
             />
-
-            <Typography>Categories</Typography>
+            </div>
+           
+            <div className="box">
+            <Typography className="heading">Categories</Typography>
             <ul className="categoryBox">
               {categories.map((category) => (
                 <li
@@ -101,10 +106,14 @@ const Products = ({ match }) =>{
                 </li>
               ))}
             </ul>
+            </div>
 
+            <div className="box">
             <fieldset>
-              <Typography component="legend">Ratings Above</Typography>
+              <Typography className="heading" component="legend">Ratings</Typography>
+              <p className="small">{ratings} Star & Above</p>
               <Slider
+              className="priceSlider"
                 value={ratings}
                 onChange={(e, newRating) => {
                   setRatings(newRating);
@@ -115,8 +124,9 @@ const Products = ({ match }) =>{
                 max={5}
               />
             </fieldset>
+            </div>
           </div>
-          {resultPerPage < count && (
+          {/* {resultPerPage < filteredProductsCount && ( */}
             <div className="paginationBox">
               <Pagination
                 activePage={currentPage}
@@ -133,7 +143,7 @@ const Products = ({ match }) =>{
                 activeLinkClass="pageLinkActive"
               />
             </div>
-          )}
+          {/* )} */}
         </Fragment>
       )}
     </Fragment>

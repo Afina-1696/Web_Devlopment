@@ -6,15 +6,16 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    border-radius: 1rem;
   }
   
   #productListHeading {
     font: 400 2rem "Roboto";
-    padding: 0.5vmax;
+    /* padding: 0.5vmax; */
     box-sizing: border-box;
     color: rgba(0, 0, 0, 0.637);
     transition: all 0.5s;
-    margin: 2rem;
+    margin: 1.5rem;
     text-align: center;
   }
   
